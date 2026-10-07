@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SecureScan — Web Application Security Scanner</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<aside>
+  <div class="brand">🛡 SecureScan</div>
+  <button class="nav active" data-page="dashboard">Dashboard</button>
+  <button class="nav" data-page="scan">New Scan</button>
+  <button class="nav" data-page="history">Scan History</button>
+  <button class="nav" data-page="reports">Reports</button>
+  <div class="side-note">Authorized defensive testing only.<br>Passive, non-destructive checks.</div>
+</aside>
+<main>
+<header><div><span class="eyebrow">CYBERSECURITY</span><h1 id="pageTitle">Security Dashboard</h1></div>
+<button id="theme">☾</button></header>
+
+<section id="dashboard" class="page">
+<div class="cards">
+<div class="card"><span>Total scans</span><b id="total">0</b></div>
+<div class="card critical"><span>Critical</span><b id="critical">0</b></div>
+<div class="card high"><span>High</span><b id="high">0</b></div>
+<div class="card medium"><span>Medium</span><b id="medium">0</b></div>
+<div class="card low"><span>Low</span><b id="low">0</b></div>
+</div>
+<div class="grid">
+<div class="panel"><h2>Latest scan</h2><div id="latest">No scans yet.</div></div>
+<div class="panel"><h2>Security score</h2><div class="score" id="score">—</div><p class="muted">Based only on checks implemented in this MVP.</p></div>
+</div>
+</section>
+
+<section id="scan" class="page hidden">
+<div class="panel">
+<h2>Start a safe scan</h2>
+<p class="muted">Use only websites you own or have explicit permission to assess.</p>
+<label>Target URL</label><input id="url" placeholder="https://example.com">
+<label class="check"><input type="checkbox" id="authorized"> I confirm I am authorized to scan this target.</label>
+<button class="primary" id="start">Start Scan</button>
+<div id="progress" class="progress hidden"><div></div><p id="stage">Preparing…</p></div>
+<div id="error" class="error hidden"></div>
+</div>
+</section>
+
+<section id="history" class="page hidden">
+<div class="panel"><h2>Scan History</h2><div id="historyTable"></div></div>
+</section>
+
+<section id="reports" class="page hidden">
+<div class="panel"><h2>Reports</h2><p class="muted">Open a scan from history to download JSON or PDF.</p><div id="reportList"></div></div>
+</section>
+
+<section id="results" class="page hidden">
+<div class="panel">
+<div class="result-head"><div><h2 id="resultTitle">Scan Results</h2><p id="resultMeta" class="muted"></p></div><div class="score small" id="resultScore"></div></div>
+<div id="findings"></div>
+</div>
+</section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
